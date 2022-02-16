@@ -19,9 +19,16 @@ public class MessageServiceTest {
 
     @Test
     void messageReturnsTrueWhenIsNotEmpty(){
-        Network network = new Network("123","123");
+        Network network = new Network("192.168.1.1","this is a message");
         when(mockNetwork.sendMessage(network.getMessage(),network.getMessage())).thenReturn(true);
         assertEquals(true,service.sendMessage(network.getIp(), network.getMessage()));
+    }
+
+    @Test
+    void messageFailedToSendNoIpToSend(){
+        Network network = new Network("","This is a message");
+        when(mockNetwork.sendMessage(network.getMessage(),network.getMessage())).thenReturn(true);
+        assertEquals(false,service.sendMessage(network.getIp(), network.getMessage()));
     }
 
 }

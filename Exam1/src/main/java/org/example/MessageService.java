@@ -8,8 +8,14 @@ public class MessageService {
     }
 
     boolean sendMessage(String ip, String message){
-        if (!message.equals(" ") && !ip.equals(" ")){
-            return network.sendMessage(ip,message);
+        for(i==0; i<=2; i=++){
+            if(!ip.equals(" ") || !ip.equals("")){
+                return network.sendMessage(ip,message);
+            }else{
+                if(i==2){
+                    return false;   
+                } 
+            }
         }
         return false;
     }
